@@ -16,7 +16,7 @@ class Conexion{
 
 
 
-    public function setConexion(){
+    public static function setConexion(){
 
         //todo comprobamos que si hay conexion nos salimos de aqui, si no la creamos.
 
