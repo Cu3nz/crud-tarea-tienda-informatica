@@ -1,0 +1,20 @@
+{
+    "name": "sergiogallegosguerrero/tarea_crud_tienda-info",
+    "description": "tienda de informatica",
+    "type": "project",
+    "license": "free",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cu3nz",
+            "email": "sergiogallegit@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
