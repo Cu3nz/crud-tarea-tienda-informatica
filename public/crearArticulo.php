@@ -8,11 +8,10 @@ session_start();
 require_once __DIR__."/../vendor/autoload.php";
 
 if (isset($_POST['btn'])){
-   /*  $nombreArticulo = Errores::sanearCampos($_POST['nombreArticulo'] , MAY);
-    $precioArticulo = (float) htmlspecialchars(($_POST['precioArticulo'])); */
+     $nombreArticulo = Errores::sanearCampos($_POST['nombreArticulo'] , MAY);
+    $precioArticulo = (float) htmlspecialchars(($_POST['precioArticulo'])); 
+    $precioFormateado = number_format($precioArticulo, 2, ',', '.');
 
-    $nombreArticulo = htmlspecialchars(trim($_POST['nombreArticulo']));
-    $precioArticulo = (float) htmlspecialchars(trim(($_POST['precioArticulo'])));
 
 
     $errores = false;

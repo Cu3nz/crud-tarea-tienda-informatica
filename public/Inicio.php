@@ -64,7 +64,7 @@ $mostrarArticulo = ArticulosTienda::read(); //* En la variable, esta almacenados
                     {$articulo->precio}€
                     </td>
                     <td class="px-6 py-4 text-left">
-                    <form action = "borrarBotonPapelera.php" method='POST' onsubmit="return confirmarBorrado('{$articulo -> nombre}');"> <!--//todo onsumbit lo que hace es ejecutar la funcion confirmarBorrado de js antes de enviar el formulario , es imporatente poner el return ya que determina si se envia o no el formulario, si la funcion devuelve true (ha pulsado el boton de aceptar) se envia, si devuelve false (ha pulsado el boton de cancelar) no se envia -->
+                    <form action = "delete.php" method='POST' onsubmit="return borrarArticulo('{$articulo -> nombre}');"> <!--//todo onsumbit lo que hace es ejecutar la funcion confirmarBorrado de js antes de enviar el formulario , es imporatente poner el return ya que determina si se envia o no el formulario, si la funcion devuelve true (ha pulsado el boton de aceptar) se envia, si devuelve false (ha pulsado el boton de cancelar) no se envia -->
                     <input name='idArticulo' hidden value='{$articulo->codigo}' />
                     <a target="_blank" href="actualizarArticulo.php?idArticulo={$articulo -> codigo}"><i class="fa-solid fa-pen-to-square"></i></a>
                     <button name='btnBorrar' type='submit'>
