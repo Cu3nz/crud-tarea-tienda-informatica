@@ -80,6 +80,30 @@ class ArticulosTienda extends Conexion
         parent::$conexion = null;
     }
 
+
+    public  function update($codigoArticulo){
+
+        parent::setConexion();
+
+        $q = "update producto set nombre=:n , precio=:pre where codigo = :c";
+
+        $stmt = parent::$conexion-> prepare($q);
+
+        try {
+            //todo tienen que estar todos los atributos de la consulta  definidos aqui abajo en este caso nombre , precio y codigo.
+            $stmt -> execute([
+                ':n' => $this -> nombre,
+                ':c' => $codigoArticulo, //! cuidado con esto
+                ':pre' => $this -> precio
+        ]);
+        } catch (\PDOException $ex) {
+            die("Error, no se ha podido actualizar el articulo mensaje = " .$ex -> getMessage());
+        }
+
+        parent::$conexion=null;
+    }
+
+
     //! Tenemos una restriccion, no puede haber un producto con mismo nombre, por lo tanto creamos el siguiente metodo.
 
     //todo Metodo que comprueba si existe ese nombre en la base de datos, si devuelve (1)  es porque existe una fila en la base de datos con ese nombre, si  devuelve (0)  es porque no existe ninguna fila con ese nombre de articulo
@@ -110,6 +134,30 @@ class ArticulosTienda extends Conexion
 
        return $stmt->rowCount(); //* Devuelve 1 si existe el nombre, devuelve 0 si no existe el nombre
     } 
+
+
+
+        //todo metodo que busca un articulo pasado un codigo de articulo
+
+    public static function findArticulo(int $codigoArticulo){
+
+        parent::setConexion();
+
+        $q = "select * from producto where codigo = :c";
+
+        $stmt = parent::$conexion -> prepare($q);
+
+        try {
+            $stmt -> execute([':c' => $codigoArticulo]);
+        } catch (\PDOException $ex) {
+            die("Nos se ha podido encontrar el articulo, el error esta en el metodo findArticulo mensaje mas descriptivo = " . $ex -> getMessage());
+        }
+
+        parent::$conexion=null;
+
+        return $stmt -> fetch(PDO::FETCH_OBJ); //* Se que va a devolver una fila como maximo por eso pongo fecht, no se puede crear más de 1 articulo con el mismo nombre.
+
+    }
 
   
 

@@ -47,10 +47,11 @@ class Errores{
     //* El precio tiene que tener un rango entre 1 y 1000€
 
     public static function validarPrecio($nombre , $precio , $minPrecio , $maxPrecio ){
-        if ($precio >= $minPrecio || $precio <= $maxPrecio){ //? Si supera el rango entre 1 y 1000 mostrara un error
-            $_SESSION[$nombre] = "****Error el precio introducido es inferior o superior al limite, tienes que introducir un valor entre 0-1000€";
-
+        if ($precio < $minPrecio || $precio > $maxPrecio){
+            $_SESSION[$nombre] = "****Error el precio introducido es inferior o superior al límite, tienes que introducir un valor entre 1-1000€";
+            return false;
         }
+        return true;
     }
 
 
