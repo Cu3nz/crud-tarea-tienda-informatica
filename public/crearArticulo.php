@@ -42,7 +42,8 @@ if (isset($_POST['btn'])){
         //* precio --> va a ser lo que almacene la variale $precioArticulo, la cual almacena la cantidad que se introduce por el input de precio
         //* minPrecio --> Va a ser de 1 euros
         //* maxPrecio --> Va a ser de 1000 euros
-         return true;
+        $errores =true;
+         
     }
 
     if ($errores){ //* si hay errores
